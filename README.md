@@ -1,9 +1,9 @@
 # Asteroid-Spaceship-Arcade-Game
-#Run it in Codeskulptor
-#Following is the link "http://www.codeskulptor.org/#user47_SMfbROdRGz2RWTJ_0.py"
+# Run it in Codeskulptor
+# Following is the link "http://www.codeskulptor.org/#user47_SMfbROdRGz2RWTJ_0.py"
 
-#Game Made by Harsh Raj
-#Please play on Google Chrome for Best Experience
+# Game Made by Harsh Raj
+# Please play on Google Chrome for Best Experience
 
 import simplegui
 import math
@@ -355,6 +355,7 @@ frame.add_label("")
 frame.add_label("Happy Gaming!")
 
 timer = simplegui.create_timer(1000.0, rock_spawner)
+
 # get things rolling
 timer.start()
 frame.start()
