@@ -17,7 +17,9 @@ lives = 3
 time = 0
 started = False
 
+# ImageInfo Class
 class ImageInfo:
+
     def __init__(self, center, size, radius = 0, lifespan = None, animated = False):
         self.center = center
         self.size = size
@@ -83,9 +85,9 @@ missile_sound.set_volume(.5)
 ship_thrust_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/thrust.mp3")
 explosion_sound = simplegui.load_sound("http://commondatastorage.googleapis.com/codeskulptor-assets/sounddogs/explosion.mp3")
 
-# alternative upbeat soundtrack by composer and former IIPP student Emiel Stopler
+# alternative upbeat soundtrack by composer Emiel Stopler
 # please do not redistribute without permission from Emiel at http://www.filmcomposer.nl
-#soundtrack = simplegui.load_sound("https://storage.googleapis.com/codeskulptor-assets/ricerocks_theme.mp3")
+# soundtrack = simplegui.load_sound("https://storage.googleapis.com/codeskulptor-assets/ricerocks_theme.mp3")
 
 
 # helper functions to handle transformations
@@ -168,6 +170,7 @@ class Ship:
     
 # Sprite class
 class Sprite:
+
     def __init__(self, pos, vel, ang, ang_vel, image, info, sound = None):
         self.pos = [pos[0],pos[1]]
         self.vel = [vel[0],vel[1]]
@@ -219,6 +222,7 @@ class Sprite:
         
 # key handlers to control ship   
 def keydown(key):
+
     if key == simplegui.KEY_MAP['left']:
         my_ship.decrement_angle_vel()
     elif key == simplegui.KEY_MAP['right']:
@@ -229,6 +233,7 @@ def keydown(key):
         my_ship.shoot()
         
 def keyup(key):
+
     if key == simplegui.KEY_MAP['left']:
         my_ship.increment_angle_vel()
     elif key == simplegui.KEY_MAP['right']:
@@ -238,6 +243,7 @@ def keyup(key):
         
 # mouseclick handlers that reset UI and conditions whether splash image is drawn
 def click(pos):
+
     global started, score, lives
     center = [WIDTH / 2, HEIGHT / 2]
     size = splash_info.get_size()
@@ -250,6 +256,7 @@ def click(pos):
         soundtrack.play()
 
 def draw(canvas):
+
     global time, started, lives, score
     
     # animiate background
@@ -293,6 +300,7 @@ def draw(canvas):
 
 # timer handler that spawns a rock    
 def rock_spawner():
+
     global rock_group
     if started:
         if len(rock_group) < 12:
@@ -304,6 +312,7 @@ def rock_spawner():
                 rock_group.add(a_rock)
 
 def process_sprite_group(sets, canvas):
+
     for objs in set(sets):
         objs.update()
         objs.draw(canvas)
@@ -311,6 +320,7 @@ def process_sprite_group(sets, canvas):
             sets.remove(objs)
 
 def group_collide(grp, obj):
+
     global explosion_group
     alpha = False
     for eachobj in set(grp):
@@ -322,6 +332,7 @@ def group_collide(grp, obj):
     return alpha
 
 def group_group_collide(grp1, grp2):
+
     beta = 0
     for objects in set(grp1):
         if (group_collide(grp2, objects)):
